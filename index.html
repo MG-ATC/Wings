@@ -33,7 +33,7 @@
   html { scroll-behavior: smooth; }
   body { margin: 0; font-family: 'Manrope', sans-serif; background: #eef6fd; color: #10233a; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
   #site-shell > section, #site-shell > footer { position: relative; z-index: 2; }
-  #story, #programs, #voices, #visit { background: rgba(238,246,253,0.74); }
+  #story, #programs, #voices, #visit { background: rgba(238,246,253,0.52); }
   #story, #programs, #voices, #visit { content-visibility: auto; contain-intrinsic-size: 900px; }
   a { color: #1f6fd6; text-decoration: none; }
   a:hover { color: #d81f2a; }
@@ -69,7 +69,7 @@
   </div>
 
   <!-- Fade the moving clouds beneath the content after the hero. -->
-  <div id="lower-cloud-fade" aria-hidden="true" style="position: absolute; top: max(100vh, 660px); left: 0; right: 0; bottom: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(238,246,253,0.66) 0%, rgba(238,246,253,0.76) 16%, rgba(232,243,252,0.78) 100%);"></div>
+  <div id="lower-cloud-fade" aria-hidden="true" style="position: absolute; top: max(100vh, 660px); left: 0; right: 0; bottom: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(238,246,253,0.24) 0%, rgba(238,246,253,0.31) 16%, rgba(232,243,252,0.38) 100%);"></div>
 
   <!-- HEADER -->
   <!-- HEADER -->
@@ -306,8 +306,8 @@
         </div>
         <a href="#book" style="display: inline-flex; align-items: center; gap: 10px; margin-top: 38px; font-weight: 700; font-size: 16px; padding: 15px 28px; border-radius: 999px; color: #fff; background: linear-gradient(135deg, #14477f, #0c3160); box-shadow: 0 14px 30px rgba(12,49,96,0.32);" style-hover="transform: translateY(-2px); box-shadow: 0 20px 38px rgba(12,49,96,0.44);">Book a discovery flight <span style="font-size: 18px;">→</span></a>
       </div>
-      <div data-reveal="" style="transform: translateY(40px); min-height: 420px; border-radius: 26px; overflow: hidden; box-shadow: 0 30px 70px rgba(20,70,130,0.18); position: relative; background: linear-gradient(180deg, #dcecfa, #c3ddf5);">
-        <img src="./uploads/officeexterior.jpg" alt="Wings Over L.A. office at Building Juliet, Van Nuys Airport" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;">
+      <div data-reveal="" style="transform: translateY(40px); min-height: 420px; border-radius: 26px; overflow: hidden; box-shadow: 0 30px 70px rgba(20,70,130,0.18); position: relative; background: transparent;">
+        <img src="./uploads/officeexterior.jpg" alt="Wings Over L.A. office at Building Juliet, Van Nuys Airport" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block;">
         <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,26,52,0) 55%, rgba(6,26,52,0.42) 100%);"></div>
         <div style="position: absolute; bottom: 16px; left: 16px; font-family: 'Sora'; font-weight: 700; font-size: 13px; color: #fff; background: rgba(8,40,80,0.55); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); padding: 7px 14px; border-radius: 999px;">Building Juliet · Van Nuys Airport (VNY)</div>
       </div>
