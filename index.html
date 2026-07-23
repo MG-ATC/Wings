@@ -32,6 +32,7 @@
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { margin: 0; font-family: 'Manrope', sans-serif; background: #eef6fd; color: #10233a; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  #story, #programs, #voices, #visit { content-visibility: auto; contain-intrinsic-size: 900px; }
   a { color: #1f6fd6; text-decoration: none; }
   a:hover { color: #d81f2a; }
   ::selection { background: #bfe0fa; }
@@ -44,7 +45,7 @@
   @keyframes shimmer { 0%,100% { opacity: .55; } 50% { opacity: .9; } }
   @keyframes kenburns { 0% { transform: scale(1.04) translateY(0); } 100% { transform: scale(1.09) translateY(-1.5%); } }
   @keyframes flarePulse { 0%,100% { opacity: .5; transform: translateX(-50%) scale(1); } 50% { opacity: .85; transform: translateX(-50%) scale(1.08); } }
-  @keyframes heroReveal { 0% { opacity: 0; transform: translateY(46px) scale(.985); filter: blur(6px); } 100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } }
+  @keyframes heroReveal { 0% { opacity: 0; transform: translateY(46px) scale(.985); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
   @keyframes grainShift { 0% { transform: translate(0,0); } 20% { transform: translate(-4%,3%); } 40% { transform: translate(3%,-4%); } 60% { transform: translate(-3%,2%); } 80% { transform: translate(2%,-2%); } 100% { transform: translate(0,0); } }
   @keyframes flyAcross { 0% { left: -10%; transform: translateY(6px) rotate(-5deg); } 100% { left: 110%; transform: translateY(-34px) rotate(-5deg); } }
   @keyframes floatBob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
@@ -56,9 +57,9 @@
 
 <div style="position: relative; width: 100%; overflow: hidden;">
 
-  <!-- FULL-PAGE CLOUD VIDEO BACKGROUND -->
-  <div style="position: fixed; inset: 0; z-index: -1; overflow: hidden;">
-    <video autoplay muted loop playsinline preload="auto" disablepictureinpicture poster="./uploads/cloud-poster.jpg" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: translateZ(0); backface-visibility: hidden; will-change: transform;">
+  <!-- HERO CLOUD VIDEO BACKGROUND -->
+  <div id="cloud-video-layer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100vh; min-height: 660px; z-index: 1; overflow: hidden; pointer-events: none; background: #0a2c54;">
+    <video id="cloud-video" autoplay muted loop playsinline preload="auto" disablepictureinpicture poster="./uploads/cloud-poster.jpg" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;">
       <source src="./uploads/cloud-background.mp4" type="video/mp4">
     </video>
     <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(46,132,214,0.20) 0%, rgba(181,220,249,0.32) 42%, rgba(224,238,251,0.62) 100%);"></div>
@@ -85,8 +86,8 @@
   </header>
 
   <!-- HERO -->
-  <section style="position: relative; height: 100vh; min-height: 660px; width: 100%; overflow: hidden; background: transparent;">
-    <!-- The single fixed cloud video behind the page also powers this hero. -->
+  <section id="hero" style="position: relative; z-index: 2; height: 100vh; min-height: 660px; width: 100%; overflow: hidden; background: transparent;">
+    <!-- The cloud video is isolated to the hero for smoother rendering. -->
     <!-- legibility scrim -->
     <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(5,55,122,0.42) 0%, rgba(8,69,145,0.10) 32%, rgba(8,39,88,0.18) 66%, rgba(10,44,84,0.58) 100%);"></div>
     <!-- vignette -->
@@ -100,7 +101,7 @@
 
       <!-- book box -->
       <a id="book" href="#book" style="margin-top: 40px; animation: fadeUp .9s ease .26s both; display: block;">
-        <div style="display: flex; align-items: center; gap: 22px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.4); backdrop-filter: blur(14px); padding: 14px 16px 14px 26px; border-radius: 20px; box-shadow: 0 22px 50px rgba(10,45,90,0.28); transition: transform .35s ease, box-shadow .35s ease;" style-hover="transform: translateY(-4px); box-shadow: 0 30px 60px rgba(10,45,90,0.36);">
+        <div style="display: flex; align-items: center; gap: 22px; background: linear-gradient(135deg, rgba(20,71,127,0.80), rgba(12,49,96,0.72)); border: 1px solid rgba(255,255,255,0.42); padding: 14px 16px 14px 26px; border-radius: 20px; box-shadow: 0 22px 50px rgba(10,45,90,0.28); transition: transform .35s ease, box-shadow .35s ease;" style-hover="transform: translateY(-4px); box-shadow: 0 30px 60px rgba(10,45,90,0.36);">
           <div style="text-align: left;">
             <div style="font-family: 'Sora'; font-weight: 700; color: #fff; font-size: 19px;">Book a Discovery Flight</div>
             <div style="font-family: 'Manrope'; color: rgba(255,255,255,0.85); font-size: 14px; margin-top: 2px;">Your introduction into flying<br></div>
@@ -114,7 +115,6 @@
 
     <!-- cinematic overlays: vignette + grain + letterbox -->
     <div style="position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 90% at 50% 42%, rgba(0,0,0,0) 52%, rgba(6,26,52,0.42) 100%);"></div>
-    <div style="position: absolute; inset: -50%; pointer-events: none; opacity: 0.05; mix-blend-mode: overlay; background-image: url('data:image/svg+xml;utf8,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22140%22 height=%22140%22&gt;&lt;filter id=%22n%22&gt;&lt;feTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%222%22/&gt;&lt;/filter&gt;&lt;rect width=%22140%22 height=%22140%22 filter=%22url(%23n)%22/&gt;&lt;/svg&gt;'); animation: grainShift 1.2s steps(4) infinite;"></div>
     <div style="position: absolute; top: 0; left: 0; right: 0; height: 68px; background: linear-gradient(180deg, rgba(4,18,38,0.55), rgba(4,18,38,0)); pointer-events: none;"></div>
 
     <!-- scroll cue -->
@@ -167,7 +167,7 @@
       </div>
       <div data-reveal="" style="transform: translateY(40px);">
         <div style="position: relative; border-radius: 26px; overflow: hidden; box-shadow: 0 34px 80px rgba(20,70,130,0.22); aspect-ratio: 1/1;">
-          <video autoplay muted loop playsinline preload="auto" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          <video class="viewport-video" muted loop playsinline preload="metadata" poster="./uploads/officeexterior.jpg" style="width: 100%; height: 100%; object-fit: cover; display: block;">
             <source src="./uploads/smooth_video_under_20mb.mp4" type="video/mp4">
           </video>
           <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 78%, rgba(6,26,52,0.28) 100%); pointer-events: none;"></div>
@@ -303,7 +303,7 @@
       <div data-reveal="" style="transform: translateY(40px); min-height: 420px; border-radius: 26px; overflow: hidden; box-shadow: 0 30px 70px rgba(20,70,130,0.18); position: relative; background: linear-gradient(180deg, #dcecfa, #c3ddf5);">
         <img src="./uploads/officeexterior.jpg" alt="Wings Over L.A. office at Building Juliet, Van Nuys Airport" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;">
         <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,26,52,0) 55%, rgba(6,26,52,0.42) 100%);"></div>
-        <div style="position: absolute; bottom: 16px; left: 16px; font-family: 'Sora'; font-weight: 700; font-size: 13px; color: #fff; background: rgba(8,40,80,0.55); backdrop-filter: blur(4px); padding: 7px 14px; border-radius: 999px;">Building Juliet · Van Nuys Airport (VNY)</div>
+        <div style="position: absolute; bottom: 16px; left: 16px; font-family: 'Sora'; font-weight: 700; font-size: 13px; color: #fff; background: rgba(8,40,80,0.78); padding: 7px 14px; border-radius: 999px;">Building Juliet · Van Nuys Airport (VNY)</div>
       </div>
     </div>
   </section>
@@ -381,7 +381,7 @@
       reveals.forEach((el) => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; });
     }
 
-    // Start each video once and resume it only when needed.
+    // Play only the video currently on screen so the hero gets the decoder/GPU to itself.
     const videos = [...document.querySelectorAll('video')];
     const playVideo = (video) => {
       video.muted = true;
@@ -391,12 +391,27 @@
       const attempt = video.play();
       if (attempt && typeof attempt.catch === 'function') attempt.catch(() => {});
     };
-    videos.forEach((video) => {
-      playVideo(video);
-      video.addEventListener('canplay', () => playVideo(video), { once: true });
-    });
+    const cloudVideo = document.getElementById('cloud-video');
+    const heroSection = document.getElementById('hero');
+    if ('IntersectionObserver' in window) {
+      const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target === heroSection
+            ? cloudVideo
+            : entry.target.querySelector?.('video') || entry.target;
+          if (!video) return;
+          if (entry.isIntersecting && !document.hidden) playVideo(video);
+          else video.pause();
+        });
+      }, { threshold: 0.05, rootMargin: '100px 0px' });
+      if (heroSection) videoObserver.observe(heroSection);
+      document.querySelectorAll('.viewport-video').forEach((video) => videoObserver.observe(video));
+    } else {
+      if (cloudVideo) playVideo(cloudVideo);
+    }
     document.addEventListener('visibilitychange', () => {
-      if (!document.hidden) videos.forEach(playVideo);
+      if (document.hidden) videos.forEach((video) => video.pause());
+      else if (heroSection && heroSection.getBoundingClientRect().bottom > 0) playVideo(cloudVideo);
     });
 
     // Count-up animation.
@@ -435,18 +450,9 @@
       runCounters();
     }
 
-    // Parallax hero and compact header on scroll.
-    const parallax = [...document.querySelectorAll('[data-parallax]')];
+    // Compact the header without transforming layers over the playing video.
     const onScroll = () => {
       const y = window.scrollY || window.pageYOffset || 0;
-      parallax.forEach((el) => {
-        const speed = parseFloat(el.dataset.parallax || '0') || 0;
-        el.style.transform = `translateY(${y * speed}px)`;
-      });
-      if (hero) {
-        hero.style.transform = `translateY(${y * 0.18}px)`;
-        hero.style.opacity = String(Math.max(0, 1 - y / 620));
-      }
       if (nav) {
         const compact = y > 40;
         nav.style.paddingTop = compact ? '10px' : '18px';
