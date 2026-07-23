@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wings Over L.A. Aviation</title>
+<meta name="description" content="Wings Over L.A. Aviation flight training at Van Nuys Airport.">
+
+<style>
+  @media (max-width: 900px) {
+    header { flex-wrap: wrap; padding-left: 18px !important; padding-right: 18px !important; }
+    header > div:last-child { width: 100%; overflow-x: auto; justify-content: flex-start; padding-bottom: 2px; }
+    #story > div, #visit > div { grid-template-columns: 1fr !important; gap: 36px !important; }
+    #programs > div > div:last-child { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+    #voices > div > div:last-child { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 620px) {
+    header img { max-width: 96px; }
+    #programs > div > div:last-child { grid-template-columns: 1fr !important; }
+    section[style*="grid-template-columns: repeat(4"] { grid-template-columns: repeat(2, 1fr) !important; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  }
+</style>
+</head>
+<body>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: 'Manrope', sans-serif; background: #eef6fd; color: #10233a; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: #1f6fd6; text-decoration: none; }
+  a:hover { color: #d81f2a; }
+  ::selection { background: #bfe0fa; }
+  @keyframes drift { from { transform: translateX(0); } to { transform: translateX(120px); } }
+  @keyframes driftBack { from { transform: translateX(0); } to { transform: translateX(-140px); } }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+  @keyframes planeFloat { 0%,100% { transform: translate(0,0) rotate(-3deg); } 50% { transform: translate(14px,-18px) rotate(-1deg); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(36px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes scrollDot { 0% { opacity: 0; transform: translateY(0); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateY(16px); } }
+  @keyframes shimmer { 0%,100% { opacity: .55; } 50% { opacity: .9; } }
+  @keyframes kenburns { 0% { transform: scale(1.04) translateY(0); } 100% { transform: scale(1.09) translateY(-1.5%); } }
+  @keyframes flarePulse { 0%,100% { opacity: .5; transform: translateX(-50%) scale(1); } 50% { opacity: .85; transform: translateX(-50%) scale(1.08); } }
+  @keyframes heroReveal { 0% { opacity: 0; transform: translateY(46px) scale(.985); filter: blur(6px); } 100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } }
+  @keyframes grainShift { 0% { transform: translate(0,0); } 20% { transform: translate(-4%,3%); } 40% { transform: translate(3%,-4%); } 60% { transform: translate(-3%,2%); } 80% { transform: translate(2%,-2%); } 100% { transform: translate(0,0); } }
+  @keyframes flyAcross { 0% { left: -10%; transform: translateY(6px) rotate(-5deg); } 100% { left: 110%; transform: translateY(-34px) rotate(-5deg); } }
+  @keyframes floatBob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+  @keyframes pulseArrow { 0%,100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
+  @keyframes glowPulse { 0%,100% { box-shadow: 0 12px 26px rgba(8,40,80,0.3); } 50% { box-shadow: 0 12px 34px rgba(31,111,214,0.55); } }
+  @keyframes badgeFloat { 0%,100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-9px) rotate(1deg); } }
+</style>
+
+
+<div style="position: relative; width: 100%; overflow: hidden;">
+
+  <!-- FULL-PAGE CLOUD VIDEO BACKGROUND -->
+  <div style="position: fixed; inset: 0; z-index: -1; overflow: hidden;">
+    <video autoplay muted loop playsinline preload="auto" disablepictureinpicture poster="./uploads/cloud-poster.jpg" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: translateZ(0); backface-visibility: hidden; will-change: transform;">
+      <source src="./uploads/cloud-background.mp4" type="video/mp4">
+    </video>
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(238,246,253,0.74), rgba(224,238,251,0.8));"></div>
+  </div>
+
+  <!-- HEADER -->
+  <!-- HEADER -->
+  <header style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px clamp(24px, 4vw, 56px); background: rgba(255,255,255,0.96); box-shadow: 0 6px 24px rgba(20,60,110,0.12); transition: padding .4s ease, box-shadow .4s ease;">
+    <div style="display: flex; align-items: center; gap: clamp(12px, 1.4vw, 18px);">
+      <img src="./uploads/WINGSLOGO.svg" alt="Wings Over L.A. Aviation" style="height: clamp(46px, 5.2vw, 66px); display: block;">
+      <span style="width: 1px; height: clamp(42px, 5vw, 58px); background: rgba(12,39,69,0.18);"></span>
+      <span style="display: flex; flex-direction: column; line-height: 1;">
+        <span style="font-family: 'Sora'; font-weight: 800; font-size: clamp(21px, 2.2vw, 29px); letter-spacing: 0.01em; color: #0c2745;">Wings Over L.A.</span>
+        <span style="font-family: 'Manrope'; font-weight: 700; font-size: clamp(12px, 1.25vw, 15px); letter-spacing: 0.34em; text-transform: uppercase; color: #a97c22; margin-top: 6px;">AVIATION</span>
+      </span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <a href="#programs" style="font-weight: 600; font-size: 15px; padding: 8px 14px; border-radius: 999px; color: #1a3350; transition: color .3s;">Services</a>
+      <a href="#story" style="font-weight: 600; font-size: 15px; padding: 8px 14px; border-radius: 999px; color: #1a3350; transition: color .3s;">About Us<br></a>
+      <a href="#voices" style="font-weight: 600; font-size: 15px; padding: 8px 14px; border-radius: 999px; color: #1a3350; transition: color .3s;">Stories</a>
+      <a href="#visit" style="font-weight: 600; font-size: 15px; padding: 8px 14px; border-radius: 999px; color: #1a3350; transition: color .3s;">Visit</a>
+      <a href="#book" style="font-weight: 700; font-size: 15px; padding: 11px 22px; border-radius: 999px; color: #fff; background: linear-gradient(135deg, #14477f, #0c3160); box-shadow: 0 10px 24px rgba(12,49,96,0.3); margin-left: 6px;" style-hover="transform: translateY(-2px); box-shadow: 0 16px 30px rgba(12,49,96,0.42);">Book a Flight</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section style="position: relative; height: 100vh; min-height: 660px; width: 100%; overflow: hidden; background: transparent;">
+    <!-- The single fixed cloud video behind the page also powers this hero. -->
+    <!-- legibility scrim -->
+    <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(8,30,60,0.5) 0%, rgba(8,30,60,0.12) 32%, rgba(8,30,60,0.22) 66%, rgba(10,44,84,0.6) 100%);"></div>
+    <!-- vignette -->
+    <div style="position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 90% at 50% 42%, rgba(0,0,0,0) 54%, rgba(6,26,52,0.42) 100%);"></div>
+
+    <!-- hero content -->
+    <div style="position: relative; z-index: 5; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: clamp(110px, 12vh, 150px) 24px 0;">
+      <div style="font-family: 'Manrope'; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; font-size: 14px; color: rgba(255,255,255,0.94); margin-bottom: 22px; text-shadow: 0 2px 14px rgba(6,26,52,0.45); animation: fadeUp .8s ease both;">WINGS OVER LA AVIATION · VAN NUYS</div>
+      <h1 style="font-family: 'Sora'; font-weight: 800; color: #ffffff; font-size: clamp(46px, 8.4vw, 116px); line-height: 0.95; letter-spacing: -0.025em; margin: 0; text-shadow: 0 2px 2px rgba(6,26,52,0.35), 0 18px 60px rgba(6,26,52,0.5); text-wrap: balance; animation: heroReveal 1.2s cubic-bezier(.2,.7,.2,1) .08s both;">Your journey starts here.</h1>
+      <p style="font-family: 'Manrope'; font-weight: 500; color: rgba(255,255,255,0.95); font-size: clamp(17px, 2vw, 22px); max-width: 620px; margin: 26px 0 0; line-height: 1.5; text-shadow: 0 4px 18px rgba(10,50,100,0.25); animation: fadeUp .9s ease .16s both;">From your very first discovery flight all the way to your CFI rating, it starts here.<br></p>
+
+      <!-- book box -->
+      <a id="book" href="#book" style="margin-top: 40px; animation: fadeUp .9s ease .26s both; display: block;">
+        <div style="display: flex; align-items: center; gap: 22px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.4); backdrop-filter: blur(14px); padding: 14px 16px 14px 26px; border-radius: 20px; box-shadow: 0 22px 50px rgba(10,45,90,0.28); transition: transform .35s ease, box-shadow .35s ease;" style-hover="transform: translateY(-4px); box-shadow: 0 30px 60px rgba(10,45,90,0.36);">
+          <div style="text-align: left;">
+            <div style="font-family: 'Sora'; font-weight: 700; color: #fff; font-size: 19px;">Book a Discovery Flight</div>
+            <div style="font-family: 'Manrope'; color: rgba(255,255,255,0.85); font-size: 14px; margin-top: 2px;">Your introduction into flying<br></div>
+          </div>
+          <div style="width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, #ffffff, #dbeafb); display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 26px rgba(8,40,80,0.3); flex-shrink: 0;">
+            <span style="color: #12447c; font-size: 26px; font-weight: 700; line-height: 1;">→</span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- cinematic overlays: vignette + grain + letterbox -->
+    <div style="position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 90% at 50% 42%, rgba(0,0,0,0) 52%, rgba(6,26,52,0.42) 100%);"></div>
+    <div style="position: absolute; inset: -50%; pointer-events: none; opacity: 0.05; mix-blend-mode: overlay; background-image: url('data:image/svg+xml;utf8,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22140%22 height=%22140%22&gt;&lt;filter id=%22n%22&gt;&lt;feTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%222%22/&gt;&lt;/filter&gt;&lt;rect width=%22140%22 height=%22140%22 filter=%22url(%23n)%22/&gt;&lt;/svg&gt;'); animation: grainShift 1.2s steps(4) infinite;"></div>
+    <div style="position: absolute; top: 0; left: 0; right: 0; height: 68px; background: linear-gradient(180deg, rgba(4,18,38,0.55), rgba(4,18,38,0)); pointer-events: none;"></div>
+
+    <!-- scroll cue -->
+    <div style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 5; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+      <span style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.85); font-weight: 600;">Scroll</span>
+      <div style="width: 24px; height: 38px; border: 2px solid rgba(255,255,255,0.7); border-radius: 14px; position: relative;">
+        <div style="position: absolute; top: 7px; left: 50%; transform: translateX(-50%); width: 4px; height: 8px; border-radius: 2px; background: #fff; animation: scrollDot 1.6s ease-in-out infinite;"></div>
+      </div>
+    </div>
+
+    <!-- horizon fade into next section -->
+    <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 120px; background: linear-gradient(180deg, rgba(238,246,253,0) 0%, #eef6fd 100%);"></div>
+  </section>
+
+  <!-- STATS BAND -->
+  <section style="position: relative; z-index: 6; margin-top: -10px; padding: 0 24px;">
+    <div class="stats-grid" data-reveal style="max-width: 1040px; margin: 0 auto; background: #fff; border-radius: 24px; box-shadow: 0 30px 70px rgba(20,70,130,0.14); display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 34px 20px; transform: translateY(40px);">
+      <div style="text-align: center; padding: 6px 10px; border-right: 1px solid #e9f1f9;">
+          <div data-count style="font-family: 'Sora'; font-weight: 800; font-size: clamp(30px, 4vw, 44px); color: #1466c4; line-height: 1;">250+</div>
+          <div style="font-family: 'Manrope'; font-weight: 600; font-size: 13.5px; color: #5b7590; margin-top: 8px; letter-spacing: 0.02em;">Pilots trained</div>
+        </div>
+<div style="text-align: center; padding: 6px 10px; border-right: 1px solid #e9f1f9;">
+          <div data-count style="font-family: 'Sora'; font-weight: 800; font-size: clamp(30px, 4vw, 44px); color: #1466c4; line-height: 1;">8</div>
+          <div style="font-family: 'Manrope'; font-weight: 600; font-size: 13.5px; color: #5b7590; margin-top: 8px; letter-spacing: 0.02em;">Instructors</div>
+        </div>
+<div style="text-align: center; padding: 6px 10px; border-right: 1px solid #e9f1f9;">
+          <div data-count style="font-family: 'Sora'; font-weight: 800; font-size: clamp(30px, 4vw, 44px); color: #1466c4; line-height: 1;">5.0★</div>
+          <div style="font-family: 'Manrope'; font-weight: 600; font-size: 13.5px; color: #5b7590; margin-top: 8px; letter-spacing: 0.02em;">Average Review</div>
+        </div>
+<div style="text-align: center; padding: 6px 10px; border-right: 1px solid #e9f1f9;">
+          <div data-count style="font-family: 'Sora'; font-weight: 800; font-size: clamp(30px, 4vw, 44px); color: #1466c4; line-height: 1;">340+</div>
+          <div style="font-family: 'Manrope'; font-weight: 600; font-size: 13.5px; color: #5b7590; margin-top: 8px; letter-spacing: 0.02em;">Clear-sky days/yr</div>
+        </div>
+    </div>
+  </section>
+
+  <!-- STORY / OVERVIEW -->
+  <section id="story" style="padding: 120px 24px 90px;">
+    <div style="max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
+      <div data-reveal="" style="transform: translateY(40px);">
+        <div style="font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; font-size: 13px; color: #a97c22; margin-bottom: 18px;">ABOUT US</div>
+        <h2 style="font-family: 'Sora'; font-weight: 800; font-size: clamp(30px, 4vw, 46px); line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 22px;">Training built for real learning, not just resumes.</h2>
+        <p style="font-size: 17.5px; line-height: 1.65; color: #3c556f; margin: 0 0 18px;">Wings Over L.A. is a full-service flight school at Van Nuys airport. Whether you're chasing a lifelong dream, building hours toward an airline career, or just want to feel the wheels leave the ground once, our instructors are happy to help you.</p>
+        <p style="font-size: 17.5px; line-height: 1.65; color: #3c556f; margin: 0;">Excellent facilities, a modern well-maintained fleet, and clear blue-sky training days almost year round. You'll be surprised how quickly "someday" becomes "solo."</p>
+        <div style="display: flex; gap: 28px; margin-top: 34px; flex-wrap: wrap;">
+          <div><div style="font-family: 'Sora'; font-weight: 700; font-size: 15px; color: #10233a;">FAA-Certified</div><div style="font-size: 13.5px; color: #6a819a;">Part 61 training</div></div>
+          <div><div style="font-family: 'Sora'; font-weight: 700; font-size: 15px; color: #10233a;">7 Days a Week</div><div style="font-size: 13.5px; color: #6a819a;">Fly almost any day</div></div>
+          <div><div style="font-family: 'Sora'; font-weight: 700; font-size: 15px; color: #10233a;">Complex &amp; Diverse Airspace</div><div style="font-size: 13.5px; color: #6a819a;">Valleys, mountains, beaches, and more</div></div>
+        </div>
+      </div>
+      <div data-reveal="" style="transform: translateY(40px);">
+        <div style="position: relative; border-radius: 26px; overflow: hidden; box-shadow: 0 34px 80px rgba(20,70,130,0.22); aspect-ratio: 1/1;">
+          <video autoplay muted loop playsinline preload="auto" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+            <source src="./uploads/smooth_video_under_20mb.mp4" type="video/mp4">
+          </video>
+          <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 78%, rgba(6,26,52,0.28) 100%); pointer-events: none;"></div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS -->
+  <section id="programs" style="padding: 40px 24px 100px;">
+    <div style="max-width: 1180px; margin: 0 auto;">
+      <div data-reveal="" style="text-align: center; max-width: 660px; margin: 0 auto 56px; transform: translateY(40px);">
+        <div style="font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; font-size: 13px; color: #a97c22; margin-bottom: 16px;">SERVICES</div>
+        <h2 style="font-family: 'Sora'; font-weight: 800; font-size: clamp(30px, 4vw, 48px); line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 16px;">All of your flying needs.</h2>
+        <p style="font-size: 17px; line-height: 1.6; color: #3c556f; margin: 0;">Some of our many services provided at Wings Over L.A.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px;">
+        <div data-reveal data-reveal-stagger="0" style="position: relative; background: #fff; border: 1px solid #e6eff7; border-radius: 22px; padding: 30px 26px 34px; box-shadow: 0 14px 36px rgba(20,70,130,0.08); transition: transform .4s ease, box-shadow .4s ease, border-color .4s ease; transform: translateY(40px); overflow: hidden;" style-hover="transform: translateY(-8px); box-shadow: 0 28px 60px rgba(20,70,130,0.18); border-color: #bfe0fa;">
+            <div style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle,#cfe3f7,transparent); opacity: 0.5;"></div>
+            <div style="position: relative; width: 52px; height: 52px; border-radius: 14px; background: #14477f; display: flex; align-items: center; justify-content: center; color: #fff; font-family: 'Sora'; font-weight: 800; font-size: 17px; letter-spacing: 0.04em; margin-bottom: 22px; animation: floatBob 5s ease-in-out infinite;">01</div>
+            <div style="position: relative; font-family: 'Sora'; font-weight: 700; font-size: 20px; margin-bottom: 8px; color: #10233a;">Discovery Flight</div>
+            <div style="position: relative; font-size: 14.5px; line-height: 1.55; color: #52697f; margin-bottom: 18px;">Take the controls on a scenic first introduction to flight with an instructor right beside you.</div>
+            <div style="position: relative; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #eef4fa; padding-top: 16px;">
+              <span style="font-family: 'Sora'; font-weight: 700; font-size: 14px; color: #1466c4;">Book now</span>
+              <span style="color: #14477f; font-weight: 700; font-size: 18px;">→</span>
+            </div>
+          </div>
+<div data-reveal data-reveal-stagger="1" style="position: relative; background: #fff; border: 1px solid #e6eff7; border-radius: 22px; padding: 30px 26px 34px; box-shadow: 0 14px 36px rgba(20,70,130,0.08); transition: transform .4s ease, box-shadow .4s ease, border-color .4s ease; transform: translateY(40px); overflow: hidden;" style-hover="transform: translateY(-8px); box-shadow: 0 28px 60px rgba(20,70,130,0.18); border-color: #bfe0fa;">
+            <div style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle,#dbe9f6,transparent); opacity: 0.5;"></div>
+            <div style="position: relative; width: 52px; height: 52px; border-radius: 14px; background: #14477f; display: flex; align-items: center; justify-content: center; color: #fff; font-family: 'Sora'; font-weight: 800; font-size: 17px; letter-spacing: 0.04em; margin-bottom: 22px; animation: floatBob 5s ease-in-out infinite;">02</div>
+            <div style="position: relative; font-family: 'Sora'; font-weight: 700; font-size: 20px; margin-bottom: 8px; color: #10233a;">Flight Training</div>
+            <div style="position: relative; font-size: 14.5px; line-height: 1.55; color: #52697f; margin-bottom: 18px;">Earn your licenses through one-on-one training, flexible scheduling, and attentive, experienced instructors.</div>
+            <div style="position: relative; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #eef4fa; padding-top: 16px;">
+              <span style="font-family: 'Sora'; font-weight: 700; font-size: 14px; color: #1466c4;">Begin your journey</span>
+              <span style="color: #14477f; font-weight: 700; font-size: 18px;">→</span>
+            </div>
+          </div>
+<div data-reveal data-reveal-stagger="2" style="position: relative; background: #fff; border: 1px solid #e6eff7; border-radius: 22px; padding: 30px 26px 34px; box-shadow: 0 14px 36px rgba(20,70,130,0.08); transition: transform .4s ease, box-shadow .4s ease, border-color .4s ease; transform: translateY(40px); overflow: hidden;" style-hover="transform: translateY(-8px); box-shadow: 0 28px 60px rgba(20,70,130,0.18); border-color: #bfe0fa;">
+            <div style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle,#cfe3f7,transparent); opacity: 0.5;"></div>
+            <div style="position: relative; width: 52px; height: 52px; border-radius: 14px; background: #14477f; display: flex; align-items: center; justify-content: center; color: #fff; font-family: 'Sora'; font-weight: 800; font-size: 17px; letter-spacing: 0.04em; margin-bottom: 22px; animation: floatBob 5s ease-in-out infinite;">03</div>
+            <div style="position: relative; font-family: 'Sora'; font-weight: 700; font-size: 20px; margin-bottom: 8px; color: #10233a;">Air Tours</div>
+            <div style="position: relative; font-size: 14.5px; line-height: 1.55; color: #52697f; margin-bottom: 18px;">Take a scenic tour across Southern California with a crisp bird&#x27;s-eye view.</div>
+            <div style="position: relative; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #eef4fa; padding-top: 16px;">
+              <span style="font-family: 'Sora'; font-weight: 700; font-size: 14px; color: #1466c4;">See the sights</span>
+              <span style="color: #14477f; font-weight: 700; font-size: 18px;">→</span>
+            </div>
+          </div>
+<div data-reveal data-reveal-stagger="3" style="position: relative; background: #fff; border: 1px solid #e6eff7; border-radius: 22px; padding: 30px 26px 34px; box-shadow: 0 14px 36px rgba(20,70,130,0.08); transition: transform .4s ease, box-shadow .4s ease, border-color .4s ease; transform: translateY(40px); overflow: hidden;" style-hover="transform: translateY(-8px); box-shadow: 0 28px 60px rgba(20,70,130,0.18); border-color: #bfe0fa;">
+            <div style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle,#dbe9f6,transparent); opacity: 0.5;"></div>
+            <div style="position: relative; width: 52px; height: 52px; border-radius: 14px; background: #14477f; display: flex; align-items: center; justify-content: center; color: #fff; font-family: 'Sora'; font-weight: 800; font-size: 17px; letter-spacing: 0.04em; margin-bottom: 22px; animation: floatBob 5s ease-in-out infinite;">04</div>
+            <div style="position: relative; font-family: 'Sora'; font-weight: 700; font-size: 20px; margin-bottom: 8px; color: #10233a;">Aircraft Rental</div>
+            <div style="position: relative; font-size: 14.5px; line-height: 1.55; color: #52697f; margin-bottom: 18px;">Already certificated? Rent our modern, well-maintained fleet by the hour for your next adventure.</div>
+            <div style="position: relative; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #eef4fa; padding-top: 16px;">
+              <span style="font-family: 'Sora'; font-weight: 700; font-size: 14px; color: #1466c4;">For your next adventure</span>
+              <span style="color: #14477f; font-weight: 700; font-size: 18px;">→</span>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO BAND removed -->
+
+  <!-- TESTIMONIALS -->
+  <section id="voices" style="position: relative; padding: 110px 24px; overflow: hidden;">
+    <div style="position: relative; max-width: 1120px; margin: 0 auto;">
+      <div data-reveal="" style="text-align: center; margin-bottom: 54px; transform: translateY(40px);">
+        <div style="font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; font-size: 13px; color: #a97c22; margin-bottom: 14px;">WHAT OUR CUSTOMERS SAY</div>
+        <h2 style="font-family: 'Sora'; font-weight: 800; font-size: clamp(30px, 4vw, 46px); line-height: 1.05; letter-spacing: -0.02em; margin: 0; color: #10233a;">Reviews of Wings Over L.A.</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;">
+        <div data-reveal data-reveal-stagger="0" style="background: rgba(255,255,255,0.96); border-radius: 22px; padding: 30px 28px; box-shadow: 0 24px 50px rgba(8,40,80,0.24); transform: translateY(40px); display: flex; flex-direction: column;">
+            <div style="color: #f5b301; font-size: 16px; letter-spacing: 2px; margin-bottom: 14px;">★★★★★</div>
+            <p style="font-size: 16px; line-height: 1.6; color: #29405a; margin: 0 0 22px; font-weight: 500;">“As a Commercial Pilot I’m pretty picky when it comes to renting an aircraft. I’m always confident that Wings Over L.A. airplanes are meticulously maintained and are in great shape, inside and out.”</p>
+            <div style="display: flex; align-items: center; gap: 12px; margin-top: auto;">
+              <div style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg,#1466c4,#79bdf0); flex-shrink: 0;"></div>
+              <div>
+                <div style="font-family: 'Sora'; font-weight: 700; font-size: 15px; color: #10233a;">Tom K.</div>
+                <div style="font-size: 13px; color: #6a819a;">Commercial Pilot</div>
+              </div>
+            </div>
+          </div>
+<div data-reveal data-reveal-stagger="1" style="background: rgba(255,255,255,0.96); border-radius: 22px; padding: 30px 28px; box-shadow: 0 24px 50px rgba(8,40,80,0.24); transform: translateY(40px); display: flex; flex-direction: column;">
+            <div style="color: #f5b301; font-size: 16px; letter-spacing: 2px; margin-bottom: 14px;">★★★★★</div>
+            <p style="font-size: 16px; line-height: 1.6; color: #29405a; margin: 0 0 22px; font-weight: 500;">“I feel lucky to have found Wings Over L.A. Aviation to train for my instrument rating. Absolutely top-notch instruction and equipment!”</p>
+            <div style="display: flex; align-items: center; gap: 12px; margin-top: auto;">
+              <div style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg,#d10f1f,#ff7a84); flex-shrink: 0;"></div>
+              <div>
+                <div style="font-family: 'Sora'; font-weight: 700; font-size: 15px; color: #10233a;">Sarah J.</div>
+                <div style="font-size: 13px; color: #6a819a;">Instrument-Rated Pilot</div>
+              </div>
+            </div>
+          </div>
+<div data-reveal data-reveal-stagger="2" style="background: rgba(255,255,255,0.96); border-radius: 22px; padding: 30px 28px; box-shadow: 0 24px 50px rgba(8,40,80,0.24); transform: translateY(40px); display: flex; flex-direction: column;">
+            <div style="color: #f5b301; font-size: 16px; letter-spacing: 2px; margin-bottom: 14px;">★★★★★</div>
+            <p style="font-size: 16px; line-height: 1.6; color: #29405a; margin: 0 0 22px; font-weight: 500;">“We had such a wonderful time on our sunset air tour over the coast... highly recommend Wings Over L.A.”</p>
+            <div style="display: flex; align-items: center; gap: 12px; margin-top: auto;">
+              <div style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg,#2f8fe0,#bfe0fa); flex-shrink: 0;"></div>
+              <div>
+                <div style="font-family: 'Sora'; font-weight: 700; font-size: 15px; color: #10233a;">Chris &amp; Emma B.</div>
+                <div style="font-size: 13px; color: #6a819a;">Customers</div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT / CONTACT -->
+  <section id="visit" style="padding: 110px 24px 90px;">
+    <div style="max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: stretch;">
+      <div data-reveal="" style="transform: translateY(40px);">
+        <div style="font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; font-size: 13px; color: #a97c22; margin-bottom: 16px;">Visit us</div>
+        <h2 style="font-family: 'Sora'; font-weight: 800; font-size: clamp(30px, 4vw, 44px); line-height: 1.06; letter-spacing: -0.02em; margin: 0 0 24px;">Come visit us.</h2>
+        <p style="font-size: 17px; line-height: 1.6; color: #3c556f; margin: 0 0 34px; max-width: 460px;">Drop by for a tour, meet the instructors, and make a plan to begin your flying career.</p>
+        <div style="display: flex; flex-direction: column; gap: 2px;">
+          <div style="display: flex; gap: 28px; padding: 20px 0; border-top: 1px solid #e6eff7;">
+            <div style="width: 118px; flex-shrink: 0; font-family: 'Sora'; font-weight: 700; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #a97c22; padding-top: 3px;">Location</div>
+            <div><div style="font-family: 'Sora'; font-weight: 700; font-size: 15.5px;">Suite J, Van Nuys Airport</div><div style="font-size: 14.5px; color: #6a819a;">7900 Balboa Boulevard, Van Nuys, CA 91406</div></div>
+          </div>
+          <div style="display: flex; gap: 28px; padding: 20px 0; border-top: 1px solid #e6eff7;">
+            <div style="width: 118px; flex-shrink: 0; font-family: 'Sora'; font-weight: 700; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #a97c22; padding-top: 3px;">Telephone</div>
+            <div><div style="font-family: 'Sora'; font-weight: 700; font-size: 15.5px;">(818) 922-2449</div><div style="font-size: 14.5px; color: #6a819a;">Mon–Sun · 9am to 5pm</div></div>
+          </div>
+          <div style="display: flex; gap: 28px; padding: 20px 0; border-top: 1px solid #e6eff7; border-bottom: 1px solid #e6eff7;">
+            <div style="width: 118px; flex-shrink: 0; font-family: 'Sora'; font-weight: 700; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #a97c22; padding-top: 3px;">Email</div>
+            <div><div style="font-family: 'Sora'; font-weight: 700; font-size: 15.5px;">info@wingsoverla.net</div><div style="font-size: 14.5px; color: #6a819a;">We reply within a day</div></div>
+          </div>
+        </div>
+        <a href="#book" style="display: inline-flex; align-items: center; gap: 10px; margin-top: 38px; font-weight: 700; font-size: 16px; padding: 15px 28px; border-radius: 999px; color: #fff; background: linear-gradient(135deg, #14477f, #0c3160); box-shadow: 0 14px 30px rgba(12,49,96,0.32);" style-hover="transform: translateY(-2px); box-shadow: 0 20px 38px rgba(12,49,96,0.44);">Book a discovery flight <span style="font-size: 18px;">→</span></a>
+      </div>
+      <div data-reveal="" style="transform: translateY(40px); min-height: 420px; border-radius: 26px; overflow: hidden; box-shadow: 0 30px 70px rgba(20,70,130,0.18); position: relative; background: linear-gradient(180deg, #dcecfa, #c3ddf5);">
+        <img src="./uploads/officeexterior.jpg" alt="Wings Over L.A. office at Building Juliet, Van Nuys Airport" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;">
+        <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,26,52,0) 55%, rgba(6,26,52,0.42) 100%);"></div>
+        <div style="position: absolute; bottom: 16px; left: 16px; font-family: 'Sora'; font-weight: 700; font-size: 13px; color: #fff; background: rgba(8,40,80,0.55); backdrop-filter: blur(4px); padding: 7px 14px; border-radius: 999px;">Building Juliet · Van Nuys Airport (VNY)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background: #0c1f36; color: rgba(255,255,255,0.72); padding: 60px 24px 40px;">
+    <div style="max-width: 1180px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; align-items: flex-start;">
+      <div style="max-width: 320px;">
+        <div style="height: 52px; padding: 8px 16px; border-radius: 14px; background: #fff; display: inline-flex; align-items: center; margin-bottom: 18px;">
+          <img src="./uploads/WINGSLOGO.svg" alt="Wings Over L.A." style="height: 36px; display: block;">
+        </div>
+        <p style="font-size: 14.5px; line-height: 1.6; margin: 0;">A premier flight school at Van Nuys Airport.<br>Book your discover flight today. Your journey<br>awaits!</p>
+      </div>
+      <div style="display: flex; gap: 56px; flex-wrap: wrap;">
+        <div>
+          <div style="font-family: 'Sora'; font-weight: 700; color: #fff; font-size: 14px; margin-bottom: 14px;">Services</div>
+          <div style="display: flex; flex-direction: column; gap: 9px; font-size: 14px;"><a href="#programs" style="color: rgba(255,255,255,0.72);">Discovery Flights</a><a href="#programs" style="color: rgba(255,255,255,0.72);">Flight Training</a><a href="#programs" style="color: rgba(255,255,255,0.72);">Air Tours</a><a href="#programs" style="color: rgba(255,255,255,0.72);">Aircraft Rental</a></div>
+        </div>
+        <div>
+          <div style="font-family: 'Sora'; font-weight: 700; color: #fff; font-size: 14px; margin-bottom: 14px;">School</div>
+          <div style="display: flex; flex-direction: column; gap: 9px; font-size: 14px;"><a href="#story" style="color: rgba(255,255,255,0.72);">About Us<br></a><a href="#voices" style="color: rgba(255,255,255,0.72);">Customer Reviews</a><a href="#visit" style="color: rgba(255,255,255,0.72);">Visit</a><a href="#book" style="color: rgba(255,255,255,0.72);">Book a flight</a></div>
+        </div>
+        <div>
+          <div style="font-family: 'Sora'; font-weight: 700; color: #fff; font-size: 14px; margin-bottom: 14px;">Find us</div>
+          <div style="display: flex; flex-direction: column; gap: 9px; font-size: 14px;"><span>7900 Balboa Blvd,</span><span>Van Nuys, CA 91406<br></span><span>(818) 922-2449</span></div>
+        </div>
+      </div>
+    </div>
+    <div style="max-width: 1180px; margin: 44px auto 0; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.12); font-size: 13px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+      <span>© 2026 Wings Over L.A.™ All rights reserved.</span>
+      <span>Designed by MG Designs · Fly safe.</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(() => {
+  const ready = (fn) => document.readyState === 'loading'
+    ? document.addEventListener('DOMContentLoaded', fn, { once: true })
+    : fn();
+
+  ready(() => {
+    const root = document.body;
+    const nav = document.querySelector('header');
+    const hero = document.querySelector('section[style*="height: 100vh"] > div[style*="z-index: 5"]');
+
+    // Apply the original custom hover styles in normal HTML.
+    document.querySelectorAll('[style-hover]').forEach((el) => {
+      const base = el.getAttribute('style') || '';
+      const hover = el.getAttribute('style-hover') || '';
+      el.addEventListener('mouseenter', () => el.setAttribute('style', base + ';' + hover));
+      el.addEventListener('mouseleave', () => el.setAttribute('style', base));
+      el.addEventListener('focus', () => el.setAttribute('style', base + ';' + hover));
+      el.addEventListener('blur', () => el.setAttribute('style', base));
+    });
+
+    // Scroll-reveal effects.
+    const reveals = [...document.querySelectorAll('[data-reveal]')];
+    reveals.forEach((el) => { el.style.opacity = '0'; });
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          const delay = (parseInt(el.dataset.revealStagger || '0', 10) || 0) * 90;
+          el.style.transition = `opacity .8s cubic-bezier(.2,.7,.2,1) ${delay}ms, transform .8s cubic-bezier(.2,.7,.2,1) ${delay}ms`;
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+          io.unobserve(el);
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      reveals.forEach((el) => io.observe(el));
+    } else {
+      reveals.forEach((el) => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; });
+    }
+
+    // Start each video once and resume it only when needed.
+    const videos = [...document.querySelectorAll('video')];
+    const playVideo = (video) => {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.loop = true;
+      video.playsInline = true;
+      const attempt = video.play();
+      if (attempt && typeof attempt.catch === 'function') attempt.catch(() => {});
+    };
+    videos.forEach((video) => {
+      playVideo(video);
+      video.addEventListener('canplay', () => playVideo(video), { once: true });
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) videos.forEach(playVideo);
+    });
+
+    // Count-up animation.
+    const counters = [...document.querySelectorAll('[data-count]')].map((el) => {
+      const raw = el.textContent.trim();
+      const match = raw.match(/^([^\d]*)([\d.,]+)(.*)$/);
+      if (!match) return null;
+      const decimals = (match[2].split('.')[1] || '').length;
+      const target = parseFloat(match[2].replace(/,/g, ''));
+      return { el, prefix: match[1], suffix: match[3], decimals, target, original: raw };
+    }).filter(Boolean);
+    const runCounters = () => {
+      const started = performance.now();
+      const duration = 1500;
+      const frame = (now) => {
+        const t = Math.min(1, (now - started) / duration);
+        const eased = 1 - Math.pow(1 - t, 3);
+        counters.forEach((counter) => {
+          const value = counter.target * eased;
+          const text = counter.decimals ? value.toFixed(counter.decimals) : String(Math.round(value));
+          counter.el.textContent = counter.prefix + text + counter.suffix;
+        });
+        if (t < 1) requestAnimationFrame(frame);
+      };
+      requestAnimationFrame(frame);
+    };
+    if (counters.length && 'IntersectionObserver' in window) {
+      const counterObserver = new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          runCounters();
+          counterObserver.disconnect();
+        }
+      }, { threshold: 0.35 });
+      counterObserver.observe(counters[0].el);
+    } else if (counters.length) {
+      runCounters();
+    }
+
+    // Parallax hero and compact header on scroll.
+    const parallax = [...document.querySelectorAll('[data-parallax]')];
+    const onScroll = () => {
+      const y = window.scrollY || window.pageYOffset || 0;
+      parallax.forEach((el) => {
+        const speed = parseFloat(el.dataset.parallax || '0') || 0;
+        el.style.transform = `translateY(${y * speed}px)`;
+      });
+      if (hero) {
+        hero.style.transform = `translateY(${y * 0.18}px)`;
+        hero.style.opacity = String(Math.max(0, 1 - y / 620));
+      }
+      if (nav) {
+        const compact = y > 40;
+        nav.style.paddingTop = compact ? '10px' : '18px';
+        nav.style.paddingBottom = compact ? '10px' : '18px';
+        nav.style.boxShadow = compact
+          ? '0 8px 28px rgba(20,60,110,0.16)'
+          : '0 6px 24px rgba(20,60,110,0.12)';
+      }
+    };
+    let scrollFramePending = false;
+    const requestScrollRender = () => {
+      if (scrollFramePending) return;
+      scrollFramePending = true;
+      requestAnimationFrame(() => {
+        scrollFramePending = false;
+        onScroll();
+      });
+    };
+    window.addEventListener('scroll', requestScrollRender, { passive: true });
+    window.addEventListener('resize', requestScrollRender, { passive: true });
+    requestScrollRender();
+  });
+})();
+</script>
+</body>
+</html>
